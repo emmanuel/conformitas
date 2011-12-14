@@ -21,7 +21,9 @@ module Conformitas
         @original_attributes = attributes
         # TODO: is there a way to instruct Virtus to always
         #   set attributes in initialize, but not afterward?
-        attributes.to_hash.each { |name, value| attribute_set(name, value) }
+        attributes.to_hash.each do |name, value|
+          attribute_set(name, value) if respond_to?("#{name}=", true)
+        end
         super
       end
     end
