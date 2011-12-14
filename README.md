@@ -67,4 +67,4 @@ Credits
 
 Thanks to Django for the useful abstraction to steal.
 
-Inspired by a remark from [Yehuda Katz's talk at GoGaRuCo 2011](http://confreaks.net/videos/651-gogaruco2011-keynote-on-building-frameworks).
+Inspired by a remark from [Yehuda Katz's presentation at GoGaRuCo 2011](http://confreaks.net/videos/651-gogaruco2011-keynote-on-building-frameworks).
