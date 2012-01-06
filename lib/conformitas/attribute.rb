@@ -1,0 +1,1 @@
+require 'conformitas/attribute/email'
