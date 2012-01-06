@@ -1,4 +1,4 @@
-require_relative '../../spec_helper'
+require File.expand_path('../../spec_helper', File.dirname(__FILE__))
 require 'conformitas'
 
 describe Conformitas::InputController do
@@ -9,25 +9,21 @@ describe Conformitas::InputController do
       attribute :name,          String
       attribute :birthdate,     Date
       attribute :occupation,    String
-      # attribute :years_active,  Range
     end
   }
   let(:attributes) { {
     'name'         => 'Spike Jonze',
     'birthdate'    => 'October 22, 1969',
     'occupation'   => 'Director, producer, actor',
-    # 'years_active' => '1989-present',
   } }
   let(:updated_attributes) { {
     'name'       => 'Harrison Ford',
     'birthdate'  => 'July 13, 1942',
     'occupation' => 'Actor, producer',
   } }
-  subject { class_under_test.new }
+  subject { class_under_test.new(attributes) }
 
   describe 'when bound to data' do
-    subject { class_under_test.new(attributes) }
-
     it 'retains the originally provided values via #original_attributes' do
       assert_same attributes, subject.original_attributes
     end
@@ -42,7 +38,7 @@ describe Conformitas::InputController do
   end
 
   describe 'when not bound to data' do
-    subject { class_under_test.new }
+    let(:attributes) { {} }
 
     it 'retains the originally provided values via #original_attributes' do
       assert_equal Hash.new, subject.original_attributes
